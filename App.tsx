@@ -1,12 +1,9 @@
 import { useFonts } from 'expo-font';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from "@expo-google-fonts/roboto";
-import { fontFamily } from './src/theme/font-family';
-import { fontSize } from './src/theme/font-size';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { colors } from './src/theme/colors';
+import { NavigationContainer } from '@react-navigation/native';
+import StackRoutes from './src/routes/stack.routes';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,22 +24,8 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <StackRoutes />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontFamily: fontFamily.medium,
-    fontSize: fontSize.md
-  }
-});

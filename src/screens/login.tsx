@@ -10,6 +10,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Text style={{ color: colors.black }}>Login</Text>
+
       <Button
         title="Go to private"
         onPress={() => navigation.navigate('private')}

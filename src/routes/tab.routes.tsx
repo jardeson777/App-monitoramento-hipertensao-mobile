@@ -11,9 +11,16 @@ const Tab = createBottomTabNavigator<TabParamList>();
 
 const TabRoutes = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen name="home" component={HomeScreen} />
-      <Tab.Screen name="notifications" component={NotificationsScreen} />
+      <Tab.Screen
+        name="notifications"
+        component={NotificationsScreen}
+      />
     </Tab.Navigator>
   );
 }

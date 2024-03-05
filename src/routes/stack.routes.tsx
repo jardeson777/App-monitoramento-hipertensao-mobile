@@ -11,7 +11,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackRoutes = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="login" component={LoginScreen} />
       <Stack.Screen name="private" component={TabRoutes} />
     </Stack.Navigator>

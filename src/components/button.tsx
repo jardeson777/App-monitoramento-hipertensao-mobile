@@ -4,10 +4,21 @@ import { colors } from "../theme/colors";
 
 type ButtonProps = {
   children: ReactNode;
-  onPress: () => void;
+  onPress?: () => void;
   variant: "primary" | "destructive" | "outlinePrimary" |
   "outlineDestructive" | "default";
   size: "full" | "icon" | "md";
+}
+
+export const Button = (input: ButtonProps) => {
+  return (
+    <TouchableOpacity
+      onPress={input.onPress}
+      style={[variantStyles[input.variant], sizeStyles[input.size]]}>
+
+      {input.children}
+    </TouchableOpacity>
+  )
 }
 
 const stylesVariant = StyleSheet.create({
@@ -62,15 +73,4 @@ const sizeStyles = {
   full: stylesSize.full,
   md: stylesSize.md,
   icon: stylesSize.icon,
-}
-
-export const Button = (input: ButtonProps) => {
-  return (
-    <TouchableOpacity
-      onPress={input.onPress}
-      style={[variantStyles[input.variant], sizeStyles[input.size]]}>
-
-      {input.children}
-    </TouchableOpacity>
-  )
 }

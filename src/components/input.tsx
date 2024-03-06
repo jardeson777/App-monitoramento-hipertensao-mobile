@@ -8,12 +8,19 @@ type InputProps = {
   value?: string;
   placeholder: string;
   onChangeText?: (text: string) => void;
+  secureTextEntry?: boolean;
 }
 
-const Input = ({ label, onChangeText, placeholder, value = "" }: InputProps) => {
+const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry = false }: InputProps) => {
   return (
     <View>
-      <TextInput style={styles.input} onChangeText={onChangeText} placeholder={placeholder} value={value} />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        value={value}
+        secureTextEntry={secureTextEntry}
+      />
       <Text style={styles.label}>{label}</Text>
     </View>
   );
@@ -30,7 +37,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: fontSize.md,
-    marginTop: -68,
+    position: "relative",
+    top: -68,
     marginLeft: 10,
     paddingHorizontal: 10,
     backgroundColor: colors.secondary,

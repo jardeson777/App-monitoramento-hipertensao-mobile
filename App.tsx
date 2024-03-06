@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import StackRoutes from './src/routes/stack.routes';
+import { ToastProvider } from 'react-native-toast-notifications';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,7 +26,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StackRoutes />
+      <ToastProvider >
+        <StackRoutes />
+      </ToastProvider>
     </NavigationContainer>
   );
 }

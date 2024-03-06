@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 30,
     backgroundColor: colors.secondary,
+    paddingTop: 30,
   },
   containerButtons: {
     paddingTop: 10,

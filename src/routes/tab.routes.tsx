@@ -15,12 +15,18 @@ export type TabParamList = {
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
+const nameRoutes = {
+  home: "Home",
+  notifications: "Alertas"
+}
+
 const TabRoutes = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarStyle: { height: 90 }, tabBarLabel(props) {
-          return <Text style={textTabStyles[String(props.focused)]}>{props.children}</Text>
+          return <Text style={textTabStyles[String(props.focused)]}>{nameRoutes[props.children]}</Text>
         },
       }}>
       <Tab.Screen

@@ -15,11 +15,9 @@ type HomeScreenProps = BottomTabScreenProps<TabParamList, 'home'>;
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
     <SafeAreaView style={styles.container}>
-
       <Text style={styles.text}>Clique em uma das opções:</Text>
 
       <View style={styles.containerButtons}>
-
         <Button variant="primary" size="full">
           <View style={styles.buttonContent}>
             <MaterialCommunityIcons style={styles.iconButton} name="pill" size={24} color="black" />
@@ -40,9 +38,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
             <Text style={styles.textButton}>Medir pressão</Text>
           </View>
         </Button>
-
       </View>
-
     </SafeAreaView>
   );
 }

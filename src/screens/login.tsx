@@ -33,6 +33,10 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     };
 
     console.log("aaa", form);
+    toast.show("Login realizado com sucesso!", {
+      type: "success",
+    });
+    navigation.navigate("private");
   };
 
 

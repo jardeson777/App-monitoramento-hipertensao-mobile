@@ -50,8 +50,6 @@ const TabRoutes = () => {
         component={NotificationsScreen} />
     </Tab.Navigator>
   );
-
-
 }
 
 const textTabStyles = StyleSheet.create({
@@ -83,9 +81,7 @@ const iconTabStyles = StyleSheet.create({
 })
 
 const iconContainerStyles = StyleSheet.create({
-  false: {
-
-  },
+  false: {},
   true: {
     width: '100%',
     height: 67,

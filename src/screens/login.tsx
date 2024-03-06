@@ -39,6 +39,17 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     navigation.navigate("private");
   };
 
+  const maskCpf = (value: string) => {
+    setForm({
+      ...form,
+      cpf: value
+        .replace(/\D/g, "")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+        .replace(/(-\d{2})\d+?$/, "$1")
+    });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,7 +65,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
             label="Cpf"
             placeholder="digite seu cpf"
             value={form?.cpf || ""}
-            onChangeText={(text) => setForm({ ...form, cpf: text })}
+            onChangeText={(text) => maskCpf(text)}
           />
           <Input
             label="Senha"

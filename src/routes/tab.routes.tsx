@@ -53,7 +53,8 @@ const TabRoutes = () => {
           },
         }}
         name="notifications"
-        component={NotificationsScreen} />
+        component={NotificationsScreen}
+      />
     </Tab.Navigator>
   );
 }

@@ -20,8 +20,6 @@ const MeasurePressureScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}><Text>{`<`}- Voltar</Text></View>
-
       <ScrollView style={styles.content}>
         <Text style={styles.textMedirPressao}>Medir pressão:</Text>
 

@@ -8,11 +8,13 @@ import { fontFamily } from "../theme/font-family";
 import { fontSize } from "../theme/font-size";
 import TesteScreen from "../screens/teste";
 import TakeMedicineScreen from "../screens/take-medicine";
+import MeasurePressureScreen from "../screens/measure-pressure";
 
 export type RootStackParamList = {
   login: undefined;
   main: undefined;
   takeMedicine: undefined;
+  measurePressure: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -32,6 +34,18 @@ const StackRoutes = () => {
       <Stack.Screen
         name="takeMedicine"
         component={TakeMedicineScreen}
+        options={{
+          headerShown: true,
+          header(props) {
+            return (
+              <BackButton onPress={props.navigation.goBack} />
+            );
+          },
+        }}
+      />
+      <Stack.Screen
+        name="measurePressure"
+        component={MeasurePressureScreen}
         options={{
           headerShown: true,
           header(props) {

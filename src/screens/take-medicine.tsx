@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Card } from "../components/card";
@@ -12,59 +12,88 @@ import { Feather } from '@expo/vector-icons';
 type TakeMedicineScreenProps = NativeStackScreenProps<RootStackParamList, 'takeMedicine'>;
 
 const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
+  const medicines = [
+    {
+      id: "1",
+      title: "Losartana",
+      interval: "08 horas",
+      start: "01 de março, 2024",
+      date: "06 março, 2024",
+      time: "21:00",
+    },
+    {
+      id: "2",
+      title: "Losartana",
+      interval: "08 horas",
+      start: "01 de março, 2024",
+      date: "07 março, 2024",
+      time: "05:00",
+    },
+  ]
+
   return (
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.card}>
-        <Card variant="primary">
+      <FlatList
+        data={medicines}
+        contentContainerStyle={{ gap: 20 }}
+        renderItem={({ item }) => (
 
-          <View style={styles.containerText}>
-            <Text style={styles.text}>Nome: </Text>
-            <Text style={styles.textVariable}>Losartana</Text>
-          </View>
-          <View style={styles.containerText}>
-            <Text style={styles.text}>Tomar a cada: </Text>
-            <Text style={styles.textVariable}>08 horas</Text>
-          </View>
-          <View style={styles.containerText}>
-            <Text style={styles.text}>Início: </Text>
-            <Text style={styles.textVariable}>01 de março, 2024</Text>
-          </View>
+          <View style={styles.card}>
+            <Card variant="primary">
 
-          <View style={styles.containerCalendarClock}>
-            <View style={styles.calendarContent}>
-              <Feather name="calendar" size={18} color="black" />
-              <Text style={styles.textCalendarClock}>06 março, 2024</Text>
-            </View>
-
-            <View style={styles.clockContent}>
-              <Feather name="clock" size={18} color="black" />
-              <Text style={styles.textCalendarClock}>21:00</Text>
-            </View>
-          </View>
-
-          <View style={styles.containerButtons}>
-            <Button variant="primary" size="full">
-              <View style={styles.buttonContent}>
-                <Text style={styles.textButton}>Tomei</Text>
+              <View style={styles.containerText}>
+                <Text style={styles.text}>Nome: </Text>
+                <Text style={styles.textVariable}>{item.title}</Text>
               </View>
-            </Button>
-
-            <Button variant="outlinePrimary" size="full">
-              <View style={styles.buttonContent}>
-                <Text style={styles.textButton}>Tomei com atraso</Text>
+              <View style={styles.containerText}>
+                <Text style={styles.text}>Tomar a cada: </Text>
+                <Text style={styles.textVariable}>{item.interval}</Text>
               </View>
-            </Button>
-
-            <Button variant="outlineDestructive" size="full">
-              <View style={styles.buttonContent}>
-                <Text style={styles.textButton}>Não tomei</Text>
+              <View style={styles.containerText}>
+                <Text style={styles.text}>Início: </Text>
+                <Text style={styles.textVariable}>{item.start}</Text>
               </View>
-            </Button>
+
+              <View style={styles.containerCalendarClock}>
+                <View style={styles.calendarContent}>
+                  <Feather name="calendar" size={18} color="black" />
+                  <Text style={styles.textCalendarClock}>{item.date}</Text>
+                </View>
+
+                <View style={styles.clockContent}>
+                  <Feather name="clock" size={18} color="black" />
+                  <Text style={styles.textCalendarClock}>{item.time}</Text>
+                </View>
+              </View>
+
+              <View style={styles.containerButtons}>
+                <Button variant="primary" size="full">
+                  <View style={styles.buttonContent}>
+                    <Text style={styles.textButton}>Tomei</Text>
+                  </View>
+                </Button>
+
+                <Button variant="outlinePrimary" size="full">
+                  <View style={styles.buttonContent}>
+                    <Text style={styles.textButton}>Tomei com atraso</Text>
+                  </View>
+                </Button>
+
+                <Button variant="outlineDestructive" size="full">
+                  <View style={styles.buttonContent}>
+                    <Text style={styles.textButton}>Não tomei</Text>
+                  </View>
+                </Button>
+              </View>
+
+            </Card>
           </View>
 
-        </Card>
-      </View>
+        )}
+
+        keyExtractor={(item) => item.id}
+      />
 
     </SafeAreaView>
   )
@@ -74,10 +103,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.secondary,
+    paddingTop: 40,
+    paddingBottom: 20,
   },
   card: {
     paddingHorizontal: 30,
-    paddingTop: 40,
   },
   containerCalendarClock: {
     paddingTop: 20,

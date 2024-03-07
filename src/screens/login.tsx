@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const toast = useToast();
 
   const handleLogin = () => {
-    if (!form || !form.cpf || !form.password) {
+    if (!form || !form.cpf || form.cpf.length < 14 || !form.password) {
       toast.show("Preencha todos os campos", {
         type: "danger",
       });

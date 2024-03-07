@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     toast.show("Login realizado com sucesso!", {
       type: "success",
     });
-    navigation.navigate("private");
+    navigation.navigate("main");
   };
 
 

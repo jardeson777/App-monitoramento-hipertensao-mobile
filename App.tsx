@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import StackRoutes from './src/routes/stack.routes';
 import { ToastProvider } from 'react-native-toast-notifications';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,10 +26,12 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <ToastProvider >
-        <StackRoutes />
-      </ToastProvider>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <ToastProvider >
+          <StackRoutes />
+        </ToastProvider>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }

@@ -1,7 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import { TabParamList } from "../routes/tab.routes";
 import { colors } from "../theme/colors";
 import { Button } from "../components/button";
 import { fontFamily } from "../theme/font-family";
@@ -9,8 +7,10 @@ import { fontSize } from "../theme/font-size";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../routes/stack.routes";
 
-type HomeScreenProps = BottomTabScreenProps<TabParamList, 'home'>;
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'main'>;
 
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
@@ -25,7 +25,9 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           </View>
         </Button>
 
-        <Button variant="primary" size="full">
+        <Button variant="primary" size="full" onPress={() => {
+          navigation.navigate('createMedicine');
+        }}>
           <View style={styles.buttonContent}>
             <AntDesign style={styles.iconButton} name="edit" size={24} color="black" />
             <Text style={styles.textButton}>Cadastrar remédio</Text>

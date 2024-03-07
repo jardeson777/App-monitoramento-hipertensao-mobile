@@ -6,7 +6,7 @@ type ButtonProps = {
   children: ReactNode;
   onPress?: () => void;
   variant: "primary" | "destructive" | "outlinePrimary" |
-  "outlineDestructive" | "default";
+  "outlineDestructive" | "default" | "secondary";
   size: "full" | "icon" | "md";
 }
 
@@ -41,6 +41,9 @@ const stylesVariant = StyleSheet.create({
     borderColor: colors.red600,
     borderWidth: 1,
   },
+  secondary: {
+    backgroundColor: colors.secondary,
+  }
 })
 
 const stylesSize = StyleSheet.create({
@@ -67,6 +70,7 @@ const variantStyles = {
   default: stylesVariant.default,
   outlinePrimary: stylesVariant.outlinePrimary,
   outlineDestructive: stylesVariant.outlineDestructive,
+  secondary: stylesVariant.secondary,
 }
 
 const sizeStyles = {

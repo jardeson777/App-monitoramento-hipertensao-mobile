@@ -11,6 +11,7 @@ import { colors } from "../theme/colors";
 export type TabParamList = {
   home: undefined;
   notifications: undefined;
+  homeStack: undefined;
 }
 
 const Tab = createBottomTabNavigator<TabParamList>();

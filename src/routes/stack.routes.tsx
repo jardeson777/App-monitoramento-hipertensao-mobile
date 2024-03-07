@@ -5,6 +5,7 @@ import TabRoutes from "./tab.routes";
 export type RootStackParamList = {
   login: undefined;
   private: undefined;
+  takeMedicine: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

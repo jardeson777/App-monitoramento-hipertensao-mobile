@@ -18,16 +18,16 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
       <Text style={styles.text}>Clique em uma das opções:</Text>
 
       <View style={styles.containerButtons}>
-        <Button variant="primary" size="full">
+        <Button variant="primary" size="full" onPress={() => {
+          navigation.navigate('takeMedicine');
+        }}>
           <View style={styles.buttonContent}>
             <MaterialCommunityIcons style={styles.iconButton} name="pill" size={24} color="black" />
             <Text style={styles.textButton}>Tomar remédio</Text>
           </View>
         </Button>
 
-        <Button variant="primary" size="full" onPress={() => {
-          navigation.navigate('createMedicine');
-        }}>
+        <Button variant="primary" size="full">
           <View style={styles.buttonContent}>
             <AntDesign style={styles.iconButton} name="edit" size={24} color="black" />
             <Text style={styles.textButton}>Cadastrar remédio</Text>

@@ -7,11 +7,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { fontFamily } from "../theme/font-family";
 import { fontSize } from "../theme/font-size";
 import TesteScreen from "../screens/teste";
+import TakeMedicineScreen from "../screens/take-medicine";
 
 export type RootStackParamList = {
   login: undefined;
   main: undefined;
-  createMedicine: undefined;
+  takeMedicine: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,8 +30,8 @@ const StackRoutes = () => {
       />
       <Stack.Screen name="main" component={TabRoutes} />
       <Stack.Screen
-        name="createMedicine"
-        component={TesteScreen}
+        name="takeMedicine"
+        component={TakeMedicineScreen}
         options={{
           headerShown: true,
           header(props) {

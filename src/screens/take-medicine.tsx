@@ -13,16 +13,18 @@ import { ModalComponent } from "../components/modal";
 import { useState } from "react";
 import Confirmed from "../../assets/confirmed.png"
 import Sad from "../../assets/sad.png"
+import { IMedicine } from "../interfaces/IMedicine";
 
 type TakeMedicineScreenProps = NativeStackScreenProps<RootStackParamList, 'takeMedicine'>;
 
 const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
 
-  const [modalVisibleOnTime, setModalVisibleOnTime] = useState(false);
+  const [modalVisibleTaken, setModalVisibleTaken] = useState(false);
   const [modalVisibleTakenLate, setModalVisibleTakenLate] = useState(false);
   const [modalVisibleNotTaken, setModalVisibleNotTaken] = useState(false);
+  const [medicineSelected, setMedicineSelected] = useState<IMedicine | undefined>();
 
-  const medicines = [
+  const medicines: IMedicine[] = [
     {
       id: "1",
       title: "Losartana",
@@ -35,7 +37,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
       id: "2",
       title: "Losartana",
       interval: "08 horas",
-      start: "01 de março, 2024",
+      start: "03 de março, 2024",
       date: "07 março, 2024",
       time: "05:00",
     },
@@ -45,8 +47,8 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
     <SafeAreaView style={styles.container}>
 
       <ModalComponent
-        visible={modalVisibleOnTime}
-        onRequestClose={() => setModalVisibleOnTime(!modalVisibleOnTime)}>
+        visible={modalVisibleTaken}
+        onRequestClose={() => setModalVisibleTaken(!modalVisibleTaken)}>
 
         <View style={stylesModal.modalContainer}>
           <View style={stylesModal.containerSecondary}>
@@ -56,15 +58,15 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
               <View style={stylesModal.textSpace}></View>
               <View style={styles.containerText}>
                 <Text style={styles.text}>Nome: </Text>
-                <Text style={styles.textVariable}>Losartana</Text>
+                <Text style={styles.textVariable}>{medicineSelected?.title}</Text>
               </View>
               <View style={styles.containerText}>
                 <Text style={styles.text}>Tomar a cada: </Text>
-                <Text style={styles.textVariable}>08 horas</Text>
+                <Text style={styles.textVariable}>{medicineSelected?.interval}</Text>
               </View>
               <View style={styles.containerText}>
                 <Text style={styles.text}>Início: </Text>
-                <Text style={styles.textVariable}>01 de março, 2024</Text>
+                <Text style={styles.textVariable}>{medicineSelected?.start}</Text>
               </View>
             </View>
 
@@ -74,7 +76,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
               <Button
                 variant="default"
                 size="md"
-                onPress={() => setModalVisibleOnTime(!modalVisibleOnTime)}>
+                onPress={() => setModalVisibleTaken(!modalVisibleTaken)}>
                 <View style={styles.buttonContent}>
                   <Text style={stylesModal.textButton}>Não</Text>
                 </View>
@@ -205,7 +207,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
                 <Button
                   variant="primary"
                   size="full"
-                  onPress={() => setModalVisibleOnTime(true)}>
+                  onPress={() => { setMedicineSelected(item); setModalVisibleTaken(true) }}>
                   <View style={styles.buttonContent}>
                     <Text style={styles.textButton}>Tomei</Text>
                   </View>
@@ -214,7 +216,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
                 <Button
                   variant="outlinePrimary"
                   size="full"
-                  onPress={() => setModalVisibleTakenLate(true)}>
+                  onPress={() => { setMedicineSelected(item); setModalVisibleTakenLate(true) }}>
                   <View style={styles.buttonContent}>
                     <Text style={styles.textButton}>Tomei com atraso</Text>
                   </View>
@@ -223,7 +225,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
                 <Button
                   variant="outlineDestructive"
                   size="full"
-                  onPress={() => setModalVisibleNotTaken(true)}>
+                  onPress={() => { setMedicineSelected(item); setModalVisibleNotTaken(true) }}>
                   <View style={styles.buttonContent}>
                     <Text style={styles.textButton}>Não tomei</Text>
                   </View>

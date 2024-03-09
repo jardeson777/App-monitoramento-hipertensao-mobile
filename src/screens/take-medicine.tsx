@@ -55,7 +55,7 @@ const TakeMedicineScreen = ({ navigation }: TakeMedicineScreenProps) => {
 
             <View style={stylesModal.textContainer}>
               <Text style={stylesModal.text}>Você confirma que tomou este remédio?</Text>
-              <View style={stylesModal.textSpace}></View>
+              <View style={stylesModal.textSpace} />
               <View style={styles.containerText}>
                 <Text style={styles.text}>Nome: </Text>
                 <Text style={styles.textVariable}>{medicineSelected?.title}</Text>

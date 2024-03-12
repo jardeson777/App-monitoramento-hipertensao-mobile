@@ -11,9 +11,10 @@ type InputProps = {
   secureTextEntry?: boolean;
   editable?: boolean;
   helperText?: string;
+  defaultValue?: string;
 }
 
-const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry = false, editable, helperText }: InputProps) => {
+const Input = ({ label, onChangeText, placeholder, value, secureTextEntry = false, editable, helperText, defaultValue }: InputProps) => {
   return (
     <View>
       <TextInput
@@ -23,6 +24,7 @@ const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry =
         value={value}
         secureTextEntry={secureTextEntry}
         editable={editable}
+        defaultValue={defaultValue}
       />
       <Text style={styles.label}>{label}</Text>
       {helperText && (

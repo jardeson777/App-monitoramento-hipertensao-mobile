@@ -1,16 +1,13 @@
-import { ActivityIndicator, FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View, useWindowDimensions } from "react-native"
+import { FlatList, SafeAreaView, StyleSheet, Text, View, useWindowDimensions } from "react-native"
 import { colors } from "../theme/colors";
 import { fontFamily } from "../theme/font-family";
 import { fontSize } from "../theme/font-size";
 import YoutubeIframe from "react-native-youtube-iframe";
-import { useState } from "react";
 
 const extractVideoId = (link: string) => {
-  const urlObj = new URL(link);
-  const params = new URLSearchParams(urlObj.search);
-  const idVideo = params.get("v");
+  const videoId = link.split("v=")[1].split("&")[0];
 
-  return idVideo
+  return videoId
 }
 
 const ArrayVideos = [
@@ -28,12 +25,6 @@ const ArrayVideos = [
   }
 ]
 
-type VideoProps = {
-  link: string,
-  videoId: string,
-  title: string
-}
-
 const ListOfVideosScreen = () => {
   const { width } = useWindowDimensions();
   const video_height = 250;
@@ -50,7 +41,7 @@ const ListOfVideosScreen = () => {
         renderItem={({ item }) =>
           <View style={styles.videoPlayer}>
             <YoutubeIframe
-              videoId={extractVideoId(item.link)} //No link do video fica v=ID em string
+              videoId={extractVideoId(item.link)}
               height={video_height}
               width={width - 30}
               play={false}

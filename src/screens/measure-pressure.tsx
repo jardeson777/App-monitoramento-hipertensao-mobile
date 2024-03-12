@@ -5,6 +5,7 @@ import Input from "../components/input";
 import { useState } from "react";
 import { colors } from "../theme/colors";
 import { Button } from "../components/button";
+import { format, subHours } from "date-fns";
 
 type FormPressao = {
   date: string;
@@ -41,7 +42,8 @@ const MeasurePressureScreen = () => {
             label="Data"
             placeholder="Digite a data da medição"
             helperText="dia/mês/ano"
-            value={form?.date || ""}
+            value={form?.date ?? undefined}
+            defaultValue={format(new Date(), "dd/MM/yyyy")}
             onChangeText={(text) => setForm({ ...form, date: maskDate(text) })}
           />
 
@@ -49,7 +51,8 @@ const MeasurePressureScreen = () => {
             label="Hora"
             placeholder="Digite a hora de medição"
             helperText="hora:minuto"
-            value={form?.hour || ""}
+            value={form?.hour ?? undefined}
+            defaultValue={format(subHours(new Date(), 3), "HH:mm")}
             onChangeText={(text) => setForm({ ...form, hour: maskHour(text) })}
           />
 

@@ -6,7 +6,6 @@ import { Button } from "../components/button";
 import { AntDesign } from "@expo/vector-icons";
 import { fontFamily } from "../theme/font-family";
 import { fontSize } from "../theme/font-size";
-import TesteScreen from "../screens/teste";
 import TakeMedicineScreen from "../screens/take-medicine";
 import MeasurePressureScreen from "../screens/measure-pressure";
 import ListOfVideosScreen from "../screens/list-of-videos";
@@ -29,8 +28,13 @@ const StackRoutes = () => {
       }}
     >
       <Stack.Screen
-        name="measurePressure"
-        component={MeasurePressureScreen}
+        name="login"
+        component={LoginScreen}
+      />
+      <Stack.Screen name="main" component={TabRoutes} />
+      <Stack.Screen
+        name="takeMedicine"
+        component={TakeMedicineScreen}
         options={{
           headerShown: true,
           header(props) {
@@ -40,14 +44,10 @@ const StackRoutes = () => {
           },
         }}
       />
+
       <Stack.Screen
-        name="login"
-        component={LoginScreen}
-      />
-      <Stack.Screen name="main" component={TabRoutes} />
-      <Stack.Screen
-        name="takeMedicine"
-        component={TakeMedicineScreen}
+        name="measurePressure"
+        component={MeasurePressureScreen}
         options={{
           headerShown: true,
           header(props) {

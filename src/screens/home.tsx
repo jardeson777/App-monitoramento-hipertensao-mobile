@@ -42,6 +42,15 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
             <Text style={styles.textButton}>Medir pressão</Text>
           </View>
         </Button>
+
+        <Button variant="primary" size="full" onPress={() => {
+          navigation.navigate('listOfVideos');
+        }}>
+          <View style={styles.buttonContent}>
+            <Fontisto style={styles.iconButton} name="youtube-play" size={20} color="black" />
+            <Text style={styles.textButton}>Dicas</Text>
+          </View>
+        </Button>
       </View>
     </SafeAreaView>
   );

@@ -27,13 +27,8 @@ const StackRoutes = () => {
       }}
     >
       <Stack.Screen
-        name="login"
-        component={LoginScreen}
-      />
-      <Stack.Screen name="main" component={TabRoutes} />
-      <Stack.Screen
-        name="takeMedicine"
-        component={TakeMedicineScreen}
+        name="measurePressure"
+        component={MeasurePressureScreen}
         options={{
           headerShown: true,
           header(props) {
@@ -44,8 +39,13 @@ const StackRoutes = () => {
         }}
       />
       <Stack.Screen
-        name="measurePressure"
-        component={MeasurePressureScreen}
+        name="login"
+        component={LoginScreen}
+      />
+      <Stack.Screen name="main" component={TabRoutes} />
+      <Stack.Screen
+        name="takeMedicine"
+        component={TakeMedicineScreen}
         options={{
           headerShown: true,
           header(props) {

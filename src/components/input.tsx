@@ -9,9 +9,11 @@ type InputProps = {
   placeholder: string;
   onChangeText?: (text: string) => void;
   secureTextEntry?: boolean;
+  editable?: boolean;
+  helperText?: string;
 }
 
-const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry = false }: InputProps) => {
+const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry = false, editable, helperText }: InputProps) => {
   return (
     <View>
       <TextInput
@@ -20,8 +22,12 @@ const Input = ({ label, onChangeText, placeholder, value = "", secureTextEntry =
         placeholder={placeholder}
         value={value}
         secureTextEntry={secureTextEntry}
+        editable={editable}
       />
       <Text style={styles.label}>{label}</Text>
+      {helperText && (
+        <Text style={styles.helperText}>{helperText}</Text>
+      )}
     </View>
   );
 }
@@ -44,6 +50,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     alignSelf: "flex-start",
     fontFamily: fontFamily.regular,
+  },
+  helperText: {
+    marginTop: -20,
+    paddingHorizontal: 20,
+    color: colors.green900,
+    fontSize: fontSize.md,
   }
 });
 

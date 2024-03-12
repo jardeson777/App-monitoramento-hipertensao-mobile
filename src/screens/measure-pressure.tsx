@@ -1,12 +1,10 @@
-import { Text, View, StyleSheet, ScrollView } from "react-native"
+import { Text, View, StyleSheet, ScrollView, ActivityIndicator } from "react-native"
 import { fontFamily } from "../theme/font-family";
 import { fontSize } from "../theme/font-size";
 import Input from "../components/input";
 import { useState } from "react";
 import { colors } from "../theme/colors";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/button";
-
 
 type FormPressao = {
   date: string;
@@ -18,6 +16,21 @@ type FormPressao = {
 const MeasurePressureScreen = () => {
   const [form, setForm] = useState<FormPressao | null>(null);
 
+  const maskDate = (value: string) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1/$2')
+      .replace(/(\d{2})(\d)/, '$1/$2')
+      .replace(/(\d{4})\d+?$/, '$1');
+  };
+
+  const maskHour = (value: string) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1:$2')
+      .replace(/(\d{2})\d+?$/, '$1');
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.content}>
@@ -26,16 +39,18 @@ const MeasurePressureScreen = () => {
         <View style={styles.containerInput}>
           <Input
             label="Data"
-            placeholder="Digite a data de medição"
+            placeholder="Digite a data da medição"
+            helperText="dia/mês/ano"
             value={form?.date || ""}
-            onChangeText={(text) => setForm({ ...form, date: text })}
+            onChangeText={(text) => setForm({ ...form, date: maskDate(text) })}
           />
 
           <Input
             label="Hora"
             placeholder="Digite a hora de medição"
+            helperText="hora:minuto"
             value={form?.hour || ""}
-            onChangeText={(text) => setForm({ ...form, hour: text })}
+            onChangeText={(text) => setForm({ ...form, hour: maskHour(text) })}
           />
 
           <Input
@@ -52,7 +67,6 @@ const MeasurePressureScreen = () => {
             onChangeText={(text) => setForm({ ...form, LowerPressure: text })}
           />
         </View>
-
 
       </ScrollView >
       <Button size="full" variant="primary">

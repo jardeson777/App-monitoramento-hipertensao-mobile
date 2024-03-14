@@ -27,7 +27,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           </View>
         </Button>
 
-        <Button variant="primary" size="full">
+        <Button variant="primary" size="full" onPress={() => navigation.navigate("listMedicine")}>
           <View style={styles.buttonContent}>
             <AntDesign style={styles.iconButton} name="edit" size={24} color="black" />
             <Text style={styles.textButton}>Cadastrar remédio</Text>

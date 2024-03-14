@@ -9,6 +9,7 @@ import { fontSize } from "../theme/font-size";
 import TakeMedicineScreen from "../screens/take-medicine";
 import MeasurePressureScreen from "../screens/measure-pressure";
 import ListOfVideosScreen from "../screens/list-of-videos";
+import ListMedicineScreen from "../screens/crud.medicine";
 
 export type RootStackParamList = {
   login: undefined;
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   takeMedicine: undefined;
   measurePressure: undefined;
   listOfVideos: undefined;
+  listMedicine: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -61,6 +63,19 @@ const StackRoutes = () => {
       <Stack.Screen
         name="listOfVideos"
         component={ListOfVideosScreen}
+        options={{
+          headerShown: true,
+          header(props) {
+            return (
+              <BackButton onPress={props.navigation.goBack} />
+            );
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="listMedicine"
+        component={ListMedicineScreen}
         options={{
           headerShown: true,
           header(props) {

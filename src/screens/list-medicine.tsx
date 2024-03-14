@@ -35,7 +35,7 @@ const ListMedicineScreen = ({ navigation }: ListMedicineScreenProps) => {
 
       </ScrollView>
       <View style={styles.iconButton}>
-        <Button variant="primary" size="icon">
+        <Button variant="primary" size="icon" onPress={() => navigation.navigate("registerMedicine")}>
           <View style={styles.buttonContent}>
             <Ionicons name="add-outline" size={36} />
           </View>

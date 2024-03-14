@@ -7,7 +7,7 @@ import { colors } from "../theme/colors";
 import { Button } from "../components/button";
 import { format, subHours } from "date-fns";
 
-type FormMedicine= {
+type FormMedicine = {
   name: string;
   color: string;
   initDate: string;
@@ -17,7 +17,7 @@ type FormMedicine= {
   dosage: string;
 }
 
-const CrudMedicineScreen2 = () => {
+const RegisterMedicineScreen = () => {
   const [form, setForm] = useState<FormMedicine | null>(null);
 
   const maskDate = (value: string) => {
@@ -95,7 +95,7 @@ const CrudMedicineScreen2 = () => {
             placeholder="Digite a dose"
             value={form?.dosage || ""}
             onChangeText={(text) => setForm({ ...form, dosage: text })}
-          /> 
+          />
 
         </View>
 
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CrudMedicineScreen2;
+export default RegisterMedicineScreen;
